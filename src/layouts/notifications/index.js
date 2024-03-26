@@ -13,8 +13,7 @@ import MDSnackbar from "components/MDSnackbar";
 
 // Material Dashboard 2 React example components
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
-import DashboardNavbar from "examples/Navbars/DashboardNavbar";
-import Footer from "examples/Footer";
+import DashboardNavbar from "examples/Navbars/DashboardNavbar"
 
 function Notifications() {
   const [successSB, setSuccessSB] = useState(false);
@@ -33,11 +32,7 @@ function Notifications() {
 
   const alertContent = (name) => (
     <MDTypography variant="body2" color="white">
-      A simple {name} alert with{" "}
-      <MDTypography component="a" href="#" variant="body2" fontWeight="medium" color="white">
-        an example link
-      </MDTypography>
-      . Give it a click if you like.
+      A simple {name} alert !
     </MDTypography>
   );
 
@@ -174,7 +169,6 @@ function Notifications() {
           </Grid>
         </Grid>
       </MDBox>
-      <Footer />
     </DashboardLayout>
   );
 }

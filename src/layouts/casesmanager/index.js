@@ -14,25 +14,23 @@ import MDButton from "components/MDButton";
 
 // Data
 import authorsTableData from "layouts/casesmanager/data/casesTableData";
-
+//notify
+import Notis from "examples/Notis/notifyinfo";
 
 
 
 function Tables() {
   const { columns, rows } = authorsTableData();
+  const {handleinfo,rendersSB} = Notis();
 
   const handleAddButtonClick = () => {
-    
-    return <NotificationItem
-      icon={<Icon fontSize="small">email</Icon>}
-      title="Check new messages"
-    />
+    handleinfo("新增成功","success")
   };
   const handleImportButtonClick = () =>{
-     <MDAlert>导入成功</MDAlert>
+    handleinfo("导入成功","success")
   };
   const handleExportButtonClick = () =>{
-     <MDAlert>导出成功</MDAlert>
+    handleinfo("导出失败","error")
   };
 
   return (
@@ -40,13 +38,16 @@ function Tables() {
       <DashboardNavbar />
       <Grid container spacing={1} >
         <Grid item xs={12} md={6} lg={1}>
-          <MDBox mb={1}><MDButton variant="gradient" size="large" color="secondary" circular={true} onClick={handleAddButtonClick} fullWidth> 新增用例</MDButton></MDBox>
+          <MDBox mb={1}><MDButton variant="gradient" size="medium" color="secondary" circular={true} onClick={handleAddButtonClick} fullWidth> 新增用例</MDButton></MDBox>
+          {rendersSB}
         </Grid>
         <Grid item xs={12} md={6} lg={1}>
-          <MDBox mb={1}><MDButton variant="gradient" size="large" color="secondary" circular={true} onClick={handleImportButtonClick} fullWidth>导入用例</MDButton></MDBox>
+          <MDBox mb={1}><MDButton variant="gradient" size="medium" color="secondary" circular={true} onClick={handleImportButtonClick} fullWidth>导入用例</MDButton></MDBox>
+          {rendersSB}
         </Grid>
         <Grid item xs={12} md={6} lg={1}>
-          <MDBox mb={1}><MDButton variant="gradient" size="large" color="secondary" circular={true} onClick={handleExportButtonClick} fullWidth>导出用例</MDButton></MDBox>
+          <MDBox mb={1}><MDButton variant="gradient" size="medium" color="secondary" circular={true} onClick={handleExportButtonClick} fullWidth>导出用例</MDButton></MDBox>
+          {rendersSB}
         </Grid>
       </Grid> 
       <MDBox pt={6} pb={3}>

@@ -1,11 +1,10 @@
 import Dashboard from "layouts/dashboard";
 import Cases from "layouts/casesmanager";
 import Tables from "layouts/tables";
-import Notifications from "layouts/notifications";
 import Profile from "layouts/profile";
 import SignIn from "layouts/authentication/sign-in";
 import SignUp from "layouts/authentication/sign-up";
-
+import MyComponent from "layouts/ceshi"
 // @mui icons
 import Icon from "@mui/material/Icon";
 
@@ -32,15 +31,15 @@ const routes = [
     name: "用例执行",
     key: "casesrun",
     icon: <Icon fontSize="small">tabs</Icon>,
-    route: "/tables",
-    component: <Cases />,
+    route: "/case_run",
+    component: <MyComponent />,
   },
   {
     type: "collapse",
     name: "用例生成",
     key: "casesgenerate",
     icon: <Icon fontSize="small">rocket_launch</Icon>,
-    route: "/tables",
+    route: "/case_generate",
     component: <Tables />,
   },
   {
@@ -48,7 +47,7 @@ const routes = [
     name: "自动化接口管理",
     key: "autosmanager",
     icon: <Icon fontSize="small">api</Icon>,
-    route: "/tables",
+    route: "/api_manager",
     component: <Tables />,
   },
   {
@@ -56,7 +55,7 @@ const routes = [
     name: "自动化接口用例生成",
     key: "autosgenereate",
     icon: <Icon fontSize="small">table_view</Icon>,
-    route: "/tables",
+    route: "/api_generate",
     component: <Tables />,
   },
   {
@@ -65,7 +64,7 @@ const routes = [
     key: "notifications",
     icon: <Icon fontSize="small">notifications</Icon>,
     route: "/notifications",
-    component: <Notifications />,
+    component: <MyComponent />,
   },
   {
     type: "collapse",
