@@ -54,7 +54,7 @@ function ComplexStatisticsCard({ color, title, count, percentage, icon }) {
         </MDBox>
       </MDBox>
       <MDBox pb={1} px={1}>
-        <MDTypography component="p" variant="button" color="text" display="flex">
+        <MDTypography component="p" variant="button" color="info" display="flex">
           <MDTypography
             component="span"
             variant="button"
@@ -73,11 +73,6 @@ function ComplexStatisticsCard({ color, title, count, percentage, icon }) {
 // Setting default values for the props of ComplexStatisticsCard
 ComplexStatisticsCard.defaultProps = {
   color: "info",
-  percentage: {
-    color: "success",
-    text: "",
-    label: "",
-  },
 };
 
 // Typechecking props for the ComplexStatisticsCard
@@ -94,20 +89,6 @@ ComplexStatisticsCard.propTypes = {
   ]),
   title: PropTypes.string.isRequired,
   count: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-  percentage: PropTypes.shape({
-    color: PropTypes.oneOf([
-      "primary",
-      "secondary",
-      "info",
-      "success",
-      "warning",
-      "error",
-      "dark",
-      "white",
-    ]),
-    amount: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    label: PropTypes.string,
-  }),
   icon: PropTypes.node.isRequired,
 };
 

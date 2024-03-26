@@ -6,9 +6,9 @@ import MDSnackbar from "components/MDSnackbar";
 //这里举例就是封装已有通知，返回一个可以传信息和类型的函数和渲染的变量，就可以在别的地方使用通用通知了
 const Notis = () => {
   const [sSB, setSSB] = useState(false);
-  const [color, setColorSB] = useState("");
+  const [color, setColorSB] = useState("","success");
   const [title, setTitleSB] = useState("");
-  const [icon, setIconSB] = useState("");
+  const [icon, setIconSB] = useState("","success");
   const [conTent, setContent] = useState("");
 
   const openSB = (info, color, title, icon) => {
@@ -30,7 +30,7 @@ const Notis = () => {
   const handleinfo = (message, type) => {
     switch (type) {
       case 'success':
-        openSB(message, "success", "成功", "check");
+        openSB(message, "success", "成功", "success");
         break;
       case 'info':
         openSB(message, "info", "信息", "info");
@@ -48,8 +48,8 @@ const Notis = () => {
 
   const rendersSB = (
     <MDSnackbar
-      color={color}
-      icon={icon}
+      color={color || 'info'}
+      icon={icon || 'info'}
       title={title}
       content={conTent}
       dateTime="1s ago"
