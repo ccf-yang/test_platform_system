@@ -53,8 +53,7 @@ function ComplexStatisticsCard({ color, title, count, percentage, icon }) {
           <MDTypography variant="h4">{count}</MDTypography>
         </MDBox>
       </MDBox>
-      <Divider />
-      <MDBox pb={2} px={2}>
+      <MDBox pb={1} px={1}>
         <MDTypography component="p" variant="button" color="text" display="flex">
           <MDTypography
             component="span"
