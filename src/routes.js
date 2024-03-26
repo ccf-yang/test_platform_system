@@ -1,4 +1,5 @@
 import Dashboard from "layouts/dashboard";
+import Cases from "layouts/casesmanager";
 import Tables from "layouts/tables";
 import Notifications from "layouts/notifications";
 import Profile from "layouts/profile";
@@ -23,8 +24,8 @@ const routes = [
     name: "用例库管理",
     key: "casesmanager",
     icon: <Icon fontSize="small">dataset</Icon>,
-    route: "/tables",
-    component: <Tables />,
+    route: "/cases",
+    component: <Cases />,
   },
   {
     type: "collapse",
@@ -32,7 +33,7 @@ const routes = [
     key: "casesrun",
     icon: <Icon fontSize="small">tabs</Icon>,
     route: "/tables",
-    component: <Tables />,
+    component: <Cases />,
   },
   {
     type: "collapse",

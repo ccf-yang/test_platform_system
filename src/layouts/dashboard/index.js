@@ -12,8 +12,11 @@ import ComplexStatisticsCard from "examples/Cards/StatisticsCards/ComplexStatist
 // Dashboard component
 import Projects from "layouts/dashboard/components/Projects";
 
-function Dashboard() {
 
+function Dashboard() {
+    const total_func=281
+    const zdh_api=90
+    const total_api=300
   return (
     <DashboardLayout>
       <DashboardNavbar />
@@ -29,7 +32,16 @@ function Dashboard() {
                 color="dark"
                 icon="weekend"
                 title="功能用例总数"
-                count={281}
+                count={total_func}
+              />
+            </MDBox>
+          </Grid>
+          <Grid item xs={12} md={6} lg={3}>
+            <MDBox mb={1.5}>
+              <ComplexStatisticsCard
+                icon="person_add"
+                title="接口已自动化个数"
+                count={zdh_api}
               />
             </MDBox>
           </Grid>
@@ -38,7 +50,7 @@ function Dashboard() {
               <ComplexStatisticsCard
                 icon="leaderboard"
                 title="接口总数"
-                count="300"
+                count={total_api}
               />
             </MDBox>
           </Grid>
@@ -47,8 +59,8 @@ function Dashboard() {
               <ComplexStatisticsCard
                 color="success"
                 icon="store"
-                title="接口自动化覆盖率"
-                count="34 %"
+                title="接口自动化覆盖率(%)"
+                count= {zdh_api/total_api*100} 
               />
             </MDBox>
           </Grid>

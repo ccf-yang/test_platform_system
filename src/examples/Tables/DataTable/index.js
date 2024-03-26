@@ -149,24 +149,7 @@ function DataTable({
     <TableContainer sx={{ boxShadow: "none" }}>
       {entriesPerPage || canSearch ? (
         <MDBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
-          {entriesPerPage && (
-            <MDBox display="flex" alignItems="center">
-              <Autocomplete
-                disableClearable
-                value={pageSize.toString()}
-                options={entries}
-                onChange={(event, newValue) => {
-                  setEntriesPerPage(parseInt(newValue, 10));
-                }}
-                size="small"
-                sx={{ width: "5rem" }}
-                renderInput={(params) => <MDInput {...params} />}
-              />
-              <MDTypography variant="caption" color="secondary">
-                &nbsp;&nbsp;entries per page
-              </MDTypography>
-            </MDBox>
-          )}
+          
           {canSearch && (
             <MDBox width="12rem" ml="auto">
               <MDInput
@@ -225,10 +208,29 @@ function DataTable({
       <MDBox
         display="flex"
         flexDirection={{ xs: "column", sm: "row" }}
-        justifyContent="space-between"
+        justifyContent="flex-end"
         alignItems={{ xs: "flex-start", sm: "center" }}
         p={!showTotalEntries && pageOptions.length === 1 ? 0 : 3}
+        mt={9}
       >
+        {entriesPerPage && (
+            <MDBox display="flex" alignItems="center" justify-content="flex-end">
+              <Autocomplete
+                disableClearable
+                value={pageSize.toString()}
+                options={entries}
+                onChange={(event, newValue) => {
+                  setEntriesPerPage(parseInt(newValue, 10));
+                }}
+                size="small"
+                sx={{ width: "5rem" }}
+                renderInput={(params) => <MDInput {...params} />}
+              />
+              <MDTypography variant="caption" color="secondary">
+                &nbsp;&nbsp;条每页
+              </MDTypography>
+            </MDBox>
+          )}
         {showTotalEntries && (
           <MDBox mb={{ xs: 3, sm: 0 }}>
             <MDTypography variant="button" color="secondary" fontWeight="regular">
@@ -262,6 +264,7 @@ function DataTable({
                 <Icon sx={{ fontWeight: "bold" }}>chevron_right</Icon>
               </MDPagination>
             )}
+            
           </MDPagination>
         )}
       </MDBox>
