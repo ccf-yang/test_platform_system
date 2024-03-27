@@ -17,7 +17,7 @@ import ConfiguratorRoot from "examples/Configurator/ConfiguratorRoot";
 // Material Dashboard 2 React context
 import {
   useMaterialUIController,
-  setOpenConfigurator,
+  setAddCase,
   setTransparentSidenav,
   setWhiteSidenav,
   setFixedNavbar,
@@ -25,15 +25,15 @@ import {
   setDarkMode,
 } from "context";
 
-function Configurator() {
+function AddCase() {
   const [controller, dispatch] = useMaterialUIController();
   const {
-    openConfigurator,
+    addCase,
     fixedNavbar,
     sidenavColor,
     transparentSidenav,
     whiteSidenav,
-    darkMode
+    darkMode,
   } = controller;
   const [disabled, setDisabled] = useState(false);
   const sidenavColors = ["primary", "dark", "info", "success", "warning", "error"];
@@ -55,7 +55,7 @@ function Configurator() {
     return () => window.removeEventListener("resize", handleDisabled);
   }, []);
 
-  const handleCloseConfigurator = () => setOpenConfigurator(dispatch, false);
+  const handleCloseConfigurator = () => setAddCase(dispatch, false);
   const handleTransparentSidenav = () => {
     setTransparentSidenav(dispatch, true);
     setWhiteSidenav(dispatch, false);
@@ -105,7 +105,7 @@ function Configurator() {
   });
 
   return (
-    <ConfiguratorRoot variant="permanent" ownerState={{ openConfigurator }}>
+    <ConfiguratorRoot variant="permanent" ownerState={{ addCase }}>
       <MDBox
         display="flex"
         justifyContent="space-between"
@@ -261,4 +261,4 @@ function Configurator() {
   );
 }
 
-export default Configurator;
+export default AddCase;

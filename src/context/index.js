@@ -1,21 +1,9 @@
 /**
-=========================================================
-* Material Dashboard 2 React - v2.2.0
-=========================================================
+配置全局变量的地方，这里其他地方都能引用这里的变量
+这段代码是一个基于 React 的上下文（Context）和 useReducer 钩子的状态管理示例。
+它定义了一个名为 MaterialUI 的上下文，并提供了一个 MaterialUIControllerProvider 组件来包裹应用的根组件，以便在整个应用中共享状态。
+同时，还提供了一系列的操作函数，用于更新共享状态。最后，通过 useMaterialUIController 钩子可以在组件中获取共享状态和操作函数。
 
-* Product Page: https://www.creative-tim.com/product/material-dashboard-react
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
-/**
-  This file is used for controlling the global states of the components,
-  you can customize the states for the different components here.
 */
 
 import { createContext, useContext, useReducer, useMemo } from "react";
@@ -29,7 +17,7 @@ const MaterialUI = createContext();
 // Setting custom name for the context which is visible on react dev tools
 MaterialUI.displayName = "MaterialUIContext";
 
-// Material Dashboard 2 React reducer
+// 配置全局变量状态变化
 function reducer(state, action) {
   switch (action.type) {
     case "MINI_SIDENAV": {
@@ -62,13 +50,16 @@ function reducer(state, action) {
     case "DARKMODE": {
       return { ...state, darkMode: action.value };
     }
+    case "ADDCASE": {
+      return { ...state, addCase: action.value };
+    }
     default: {
       throw new Error(`Unhandled action type: ${action.type}`);
     }
   }
 }
 
-// Material Dashboard 2 React context provider
+// 设置全局变量默认值,放在controller中
 function MaterialUIControllerProvider({ children }) {
   const initialState = {
     miniSidenav: false,
@@ -81,8 +72,10 @@ function MaterialUIControllerProvider({ children }) {
     direction: "ltr",
     layout: "dashboard",
     darkMode: false,
+    addCase: false,
   };
 
+  // 
   const [controller, dispatch] = useReducer(reducer, initialState);
 
   const value = useMemo(() => [controller, dispatch], [controller, dispatch]);
@@ -90,7 +83,7 @@ function MaterialUIControllerProvider({ children }) {
   return <MaterialUI.Provider value={value}>{children}</MaterialUI.Provider>;
 }
 
-// Material Dashboard 2 React custom hook for using context
+// 自定义hook，供外部调用用来获取全局变量
 function useMaterialUIController() {
   const context = useContext(MaterialUI);
 
@@ -108,7 +101,7 @@ MaterialUIControllerProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-// Context module functions
+// 定义全局变量改变的函数
 const setMiniSidenav = (dispatch, value) => dispatch({ type: "MINI_SIDENAV", value });
 const setTransparentSidenav = (dispatch, value) => dispatch({ type: "TRANSPARENT_SIDENAV", value });
 const setWhiteSidenav = (dispatch, value) => dispatch({ type: "WHITE_SIDENAV", value });
@@ -119,6 +112,7 @@ const setOpenConfigurator = (dispatch, value) => dispatch({ type: "OPEN_CONFIGUR
 const setDirection = (dispatch, value) => dispatch({ type: "DIRECTION", value });
 const setLayout = (dispatch, value) => dispatch({ type: "LAYOUT", value });
 const setDarkMode = (dispatch, value) => dispatch({ type: "DARKMODE", value });
+const setAddCase = (dispatch, value) => dispatch({ type: "ADDCASE", value });
 
 export {
   MaterialUIControllerProvider,
@@ -133,4 +127,5 @@ export {
   setDirection,
   setLayout,
   setDarkMode,
+  setAddCase,
 };
